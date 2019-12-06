@@ -64,6 +64,10 @@ extension ViewController {
         isScanning = false
         isFirstApplyOrientation = false
         
+        let reader = ZXMultiFormatReader.reader() as! ZXMultiFormatReader
+        reader.hints = ZXDecodeHints()
+        reader.hints.addPossibleFormat(kBarcodeFormatDataMatrix)
+        
         capture = ZXCapture()
         guard let _capture = capture else { return }
         _capture.camera = _capture.back()
